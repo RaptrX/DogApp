@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/darkGrey</item>
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="splash" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <style name="CardViewRound" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Round</item>
+    </style>
+
+    <style name="buttonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:elevation">@dimen/halfSize</item>
+        <item name="android:gravity">center</item>
+        <item name="android:backgroundTint">@color/opaqueBlack</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="textAllCaps">true</item>
+        <item name="strokeColor">@color/miami_blue</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:padding">@dimen/halfSize</item>
+        <item name="cornerRadius">28dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Subtitle1</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Round" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/fullSize</item>
+        <item name="cornerSizeTopLeft">@dimen/fullSize</item>
+        <item name="cornerSizeBottomRight">@dimen/fullSize</item>
+        <item name="cornerSizeBottomLeft">@dimen/fullSize</item>
+    </style>
+</resources>

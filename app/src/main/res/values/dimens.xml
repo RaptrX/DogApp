@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fullSize">16dp</dimen>
+    <dimen name="halfSize">8dp</dimen>
+    <dimen name="quarterSize">4dp</dimen>
+    <dimen name="doubleSize">32dp</dimen>
+</resources>
