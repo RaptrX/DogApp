@@ -27,4 +27,4 @@
 -keep class android.arch.** { *; }
 -keep interface android.arch.** { *; }
 
--keepclassmembers class com.appclr8.simpleweather.models.** { *; }
+-keepclassmembers class com.appclr8.dogrecycler.models.** { *; }

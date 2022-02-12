@@ -7,7 +7,7 @@
 
         <variable
             name="varViewModel"
-            type="com.appclr8.simpleweather.ui.home.HomeViewModel" />
+            type="com.appclr8.dogrecycler.ui.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,169 +15,18 @@
         android:layout_height="match_parent"
         android:padding="@dimen/fullSize">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/placeName"
-            style="@style/TextAppearance.Material3.HeadlineSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="@{varViewModel.selectedPlace}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Menlyn Maine" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/currentDetails"
-            style="@style/CardViewRound"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/fullSize"
-            android:elevation="@dimen/fullSize"
-            app:cardBackgroundColor="@color/opaqueBlack"
-            app:cardCornerRadius="@dimen/fullSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/placeName"
-            app:strokeColor="@color/signalYellow"
-            app:strokeWidth="2dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cardMain"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/fullSize">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/currentTemp"
-                    style="@style/TextAppearance.MaterialComponents.Headline2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="23 C" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/minTemp"
-                    style="@style/TextAppearance.Material3.BodyMedium"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="viewEnd"
-                    app:layout_constraintBottom_toBottomOf="@id/splitter"
-                    app:layout_constraintEnd_toStartOf="@id/splitter"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/splitter"
-                    tools:text="Min : 20 C" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/splitter"
-                    style="@style/TextAppearance.Material3.BodyLarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text=" | "
-                    app:layout_constraintEnd_toStartOf="@id/maxTemp"
-                    app:layout_constraintStart_toEndOf="@id/minTemp"
-                    app:layout_constraintTop_toBottomOf="@id/currentTemp" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/maxTemp"
-                    style="@style/TextAppearance.Material3.BodyMedium"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="viewStart"
-                    app:layout_constraintBottom_toBottomOf="@id/splitter"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/splitter"
-                    app:layout_constraintTop_toTopOf="@id/splitter"
-                    tools:text="Min : 30 C" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/summaryText"
-                    style="@style/TextAppearance.Material3.BodyLarge"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/halfSize"
-                    android:textAlignment="center"
-                    app:layout_constraintTop_toBottomOf="@id/minTemp"
-                    tools:text="Thunderstorm" />
-
-                <ImageView
-                    android:background="@drawable/round_background"
-                    android:id="@+id/weatherIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/precipitationText"
-                    app:layout_constraintTop_toBottomOf="@id/summaryText"
-                    tools:src="@drawable/ic_check_green" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/humidityText"
-                    style="@style/TextAppearance.Material3.BodyMedium"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toTopOf="@id/precipitationText"
-                    app:layout_constraintEnd_toStartOf="@id/weatherIcon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:text="Humidity : 23%" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/precipitationText"
-                    style="@style/TextAppearance.Material3.BodyMedium"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/quarterSize"
-                    android:paddingBottom="@dimen/quarterSize"
-                    app:layout_constraintBottom_toBottomOf="@id/weatherIcon"
-                    app:layout_constraintEnd_toStartOf="@id/weatherIcon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/weatherIcon"
-                    tools:text="Precipitation : 23%" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/windText"
-                    style="@style/TextAppearance.Material3.BodyMedium"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toStartOf="@id/weatherIcon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/precipitationText"
-                    tools:text="Wind : 23km/h" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:paddingTop="@dimen/fullSize"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingBottom="@dimen/halfSize"
-            app:layout_constraintBottom_toTopOf="@id/btn_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/currentDetails"
-            tools:listitem="@layout/upcoming_item"
-            tools:orientation="horizontal" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_search"
-            style="@style/buttonStyle"
-            android:onClick="@{() -> varViewModel.onSearchClicked()}"
-            android:text="@string/locations"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            app:cornerRadius="28dp"
-            app:icon="@android:drawable/ic_search_category_default"
-            app:iconGravity="textStart"
-            app:iconTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/image_item"
+            tools:orientation="horizontal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

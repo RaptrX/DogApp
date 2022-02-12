@@ -10,7 +10,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.appclr8.simpleweather"
+        applicationId "com.appclr8.dogrecycler"
         minSdk 24
         targetSdk 31
         versionCode 1
@@ -29,7 +29,7 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
             //outputFileName = new File(outputFileName.replace(".apk", "-${defaultConfig.versionName}.apk"))
-            outputFileName = new File("SimpleWeather-v${defaultConfig.versionName}-vc${defaultConfig.versionCode}.apk")
+            outputFileName = new File("DogRecycler-v${defaultConfig.versionName}-vc${defaultConfig.versionCode}.apk")
         }
     }
 
@@ -95,6 +95,8 @@ dependencies {
     //DIALOGS
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
     implementation 'com.github.mayuce:LottieAlertDialog:1.2'
+    implementation 'com.afollestad.material-dialogs:datetime:3.3.0'
+    implementation 'com.afollestad.material-dialogs:input:3.3.0'
     //GOOGLE GUAVA
     implementation 'com.google.guava:guava:31.0.1-android'
     //GLIDE
@@ -107,5 +109,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
-apply plugin: 'io.objectbox'
+//apply plugin: 'io.objectbox'
 //apply plugin: 'com.google.gms.google-services'
