@@ -56,6 +56,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
             recyclerview.layoutManager = GridLayoutManager(context, 2)
             recyclerview.adapter = recyclerAdapter
 
+            //load more images on scroll
             recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
@@ -71,7 +72,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
                 }
             }
         } else {
-            recyclerAdapter!!.notifyItemRangeInserted(viewModel.imageUrls.size - 5, 4)
+            recyclerAdapter!!.notifyItemRangeInserted(viewModel.imageUrls.size - 5, 10)
         }
 
 
