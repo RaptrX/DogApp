@@ -12,4 +12,7 @@
     <string name="failure">Emotional Damage</string>
     <string name="pick_location">Pick a location</string>
     <string name="blank" />
+    <string name="share">SHARE</string>
+    <string name="save">SAVE</string>
+    <string name="optionsDialog">Would you like to save or share this image?</string>
 </resources>

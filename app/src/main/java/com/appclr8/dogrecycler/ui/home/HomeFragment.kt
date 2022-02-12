@@ -1,25 +1,22 @@
 package com.appclr8.dogrecycler.ui.home
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.appclr8.dogrecycler.GlideApp
+import androidx.recyclerview.widget.GridLayoutManager
 import com.appclr8.dogrecycler.base.BaseFragment
 import com.appclr8.dogrecycler.databinding.HomeFragmentBinding
 import com.appclr8.dogrecycler.di.AppComponent
-import timber.log.Timber
-import java.util.*
 
 
 class HomeFragment : BaseFragment<HomeViewModel>() {
 
-    lateinit var binding: HomeFragmentBinding
+    private lateinit var binding: HomeFragmentBinding
     override val viewModelClass = HomeViewModel::class.java
     override fun inject(appComponent: AppComponent) = appComponent.inject(this)
+
+    private var recyclerAdapter: HomeAdapter? = null;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,58 +36,34 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.load()
 
-        showWeatherData()
+        showData()
     }
 
-    private fun showWeatherData() {
-        viewModel.loadComplete.observe(viewLifecycleOwner) { loadComplete ->
+    private fun showData() {
+        viewModel.loadNewImages.observe(viewLifecycleOwner) { loadComplete ->
             if (loadComplete) {
-                binding.currentTemp.text = "${viewModel.weatherData.value?.current?.temp?.toInt()}°"
-                binding.minTemp.text =
-                    "Min : ${viewModel.weatherData.value?.daily!![0].temp?.min.toInt()}°"
-                binding.maxTemp.text =
-                    "Max : ${viewModel.weatherData.value?.daily!![0].temp?.max.toInt()}°"
-                binding.summaryText.text =
-                    viewModel.weatherData.value?.current!!.weather[0].description.split(' ')
-                        .joinToString(" ") { word ->
-                            word.replaceFirstChar {
-                                if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
-                            }
-                        }
-                binding.humidityText.text =
-                    "Humidity : ${viewModel.weatherData.value?.current?.humidity}%"
-                binding.windText.text =
-                    "Wind : ${viewModel.weatherData.value?.current?.wind_speed}km/h"
-                val pop = viewModel.weatherData.value?.daily!![0].pop!!
-                binding.precipitationText.text =
-                    "Precipitation : ${if(pop < 1) {(pop * 100).toInt()} else {100}}%"
-
-                val urlStr =
-                    "https://openweathermap.org/img/wn/${viewModel.weatherData.value?.current!!.weather[0].icon}@2x.png"
-                GlideApp.with(this@HomeFragment)
-                    .load(urlStr)
-                    .circleCrop()
-                    .placeholder(R.drawable.ic_popup_sync)
-                    .error(R.drawable.ic_lock_lock)
-                    .into(binding.weatherIcon)
-
-                Timber.d(urlStr)
-
                 setUpRecyclerView()
+                viewModel.shouldLoadNewImages(value = false)
             }
         }
     }
 
     private fun setUpRecyclerView() {
+        if (recyclerAdapter == null) {
+            val recyclerview = binding.recyclerView
+            recyclerAdapter = HomeAdapter(items = viewModel.imageUrls, context = requireContext())
+            recyclerview.layoutManager = GridLayoutManager(context, 2)
+            recyclerview.adapter = recyclerAdapter
 
-        val homeRecyclerAdapter = HomeAdapter(
-            items = viewModel.weatherData.value!!.daily,
-            context = requireContext()
-        )
+            recyclerAdapter!!.selectedItem.observe(viewLifecycleOwner) { selectedItem ->
+                if (selectedItem > -1) {
+                    viewModel.navigateToZoomView(selectedItem)
+                }
+            }
+        } else {
+            recyclerAdapter!!.notifyItemRangeInserted(viewModel.imageUrls.size - 5, 4)
+        }
 
-        val recyclerview = binding.recyclerView
-        recyclerview.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        recyclerview.adapter = homeRecyclerAdapter
 
     }
 }

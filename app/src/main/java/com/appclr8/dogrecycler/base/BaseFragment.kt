@@ -140,10 +140,10 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
     }
 
     @SuppressLint("CheckResult")
-    private fun showInputDialog(state : BaseStateUI.InputDialog) {
+    private fun showInputDialog(state: BaseStateUI.InputDialog) {
         MaterialDialog(this.requireContext())
-            .title(state.title)
-            .cancelOnTouchOutside(false)
+            .title(res = state.title)
+            .cancelOnTouchOutside(cancelable = false)
             .show {
                 input(
                     allowEmpty = false,
@@ -151,36 +151,36 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
                     hintRes = state.hint,
                     inputType = state.inputType
                 ) { dialog, text ->
-                    state.listener.get()?.onTextSubmitted(dialog, text.toString(), state.refID)
+                    state.listener.get()?.onTextSubmitted(dialog = dialog, text = text.toString(), refId = state.refID)
                 }
-                positiveButton(state.positiveButtonResId)
+                positiveButton(res = state.positiveButtonResId)
             }
     }
 
     private fun showCustomDialog(oneButton: Boolean, state: BaseStateUI.CustomDialog) {
-        if(oneButton) {
+        if (oneButton) {
             MaterialDialog(this.context!!)
-                .cancelOnTouchOutside(false)
-                .title(state.titleId)
-                .message(state.messageId)
+                .cancelOnTouchOutside(cancelable = false)
+                .title(res = state.titleId)
+                .message(res = state.messageId)
                 .show {
-                    icon(state.imageId)
-                    positiveButton(state.positiveButtonResId) {
-                        state.listener.get()?.onPosClicked(state.refId)
+                    icon(res = state.imageId)
+                    positiveButton(res = state.positiveButtonResId) {
+                        state.listener.get()?.onPosClicked(refId = state.refId)
                     }
                 }
         } else {
             MaterialDialog(this.context!!)
-                .cancelOnTouchOutside(false)
-                .title(state.titleId)
-                .message(state.messageId)
+                .cancelOnTouchOutside(cancelable = false)
+                .title(res = state.titleId)
+                .message(res = state.messageId)
                 .show {
-                    icon(state.imageId)
+                    icon(res = state.imageId)
                     positiveButton(state.positiveButtonResId) {
-                        state.listener.get()?.onPosClicked(state.refId)
+                        state.listener.get()?.onPosClicked(refId = state.refId)
                     }
                     negativeButton(state.negativeButtonResId) {
-                        state.listener.get()?.onNegClicked(state.refId)
+                        state.listener.get()?.onNegClicked(refId = state.refId)
                     }
                 }
         }
@@ -189,25 +189,25 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
     private fun showSuccessDialog(oneButton: Boolean, state: BaseStateUI.SuccessDialog) {
         if (oneButton) {
             MaterialDialog(this.context!!)
-                .cancelOnTouchOutside(false)
-                .message(state.messageTextId)
+                .cancelOnTouchOutside(cancelable = false)
+                .message(res = state.messageTextId)
                 .show {
-                    icon(R.drawable.ic_check_green)
-                    positiveButton(state.positiveButtonResId) {
-                        state.listener.get()?.onPosClicked(state.refId)
+                    icon(res = R.drawable.ic_check_green)
+                    positiveButton(res = state.positiveButtonResId) {
+                        state.listener.get()?.onPosClicked(refId = state.refId)
                     }
                 }
         } else {
             MaterialDialog(this.context!!)
-                .cancelOnTouchOutside(false)
-                .message(state.messageTextId)
+                .cancelOnTouchOutside(cancelable = false)
+                .message(res = state.messageTextId)
                 .show {
-                    icon(R.drawable.ic_check_green)
-                    positiveButton(state.positiveButtonResId) {
-                        state.listener.get()?.onPosClicked(state.refId)
+                    icon(res = R.drawable.ic_check_green)
+                    positiveButton(res = state.positiveButtonResId) {
+                        state.listener.get()?.onPosClicked(refId = state.refId)
                     }
                     negativeButton(state.negativeButtonResId) {
-                        state.listener.get()?.onNegClicked(state.refId)
+                        state.listener.get()?.onNegClicked(refId = state.refId)
                     }
                 }
         }
@@ -215,53 +215,53 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
 
     private fun showRadioDialog(state: BaseStateUI.RadioDialog) {
         MaterialDialog(this.requireContext())
-            .title(R.string.pick_location)
-            .cancelOnTouchOutside(false)
+            .title(res = R.string.pick_location)
+            .cancelOnTouchOutside(cancelable = false)
             .show {
                 listItemsSingleChoice(
                     items = state.list,
                     initialSelection = state.selection,
                     waitForPositiveButton = false
                 ) { _, index, _ ->
-                    state.listener.get()?.onPosBtnClicked(index, state.refId)
+                    state.listener.get()?.onPosBtnClicked(selection = index, refId = state.refId)
                 }
-                    .positiveButton(R.string.blank)
+                    .positiveButton(res = R.string.blank)
             }
     }
 
     private fun showInfoDialog(oneButton: Boolean, state: BaseStateUI.InfoDialog) {
         if (oneButton) {
             MaterialDialog(this.context!!)
-                .cancelOnTouchOutside(false)
-                .message(state.messageTextId)
+                .cancelOnTouchOutside(cancelable = state.cancelable)
+                .message(res = state.messageTextId)
                 .show {
-                    icon(R.drawable.ic_info_blue)
-                    positiveButton(state.positiveButtonResId) {
-                        state.listener.get()?.onPosClicked(state.refId)
+                    icon(res = R.drawable.ic_info_blue)
+                    positiveButton(res = state.positiveButtonResId) {
+                        state.listener.get()?.onPosClicked(refId = state.refId)
                     }
                 }
         } else {
             MaterialDialog(this.context!!)
-                .cancelOnTouchOutside(false)
-                .message(state.messageTextId)
+                .cancelOnTouchOutside(cancelable = state.cancelable)
+                .message(res = state.messageTextId)
                 .show {
-                    icon(R.drawable.ic_info_blue)
-                    positiveButton(state.positiveButtonResId) {
-                        state.listener.get()?.onPosClicked(state.refId)
+                    icon(res = R.drawable.ic_info_blue)
+                    positiveButton(res = state.positiveButtonResId) {
+                        state.listener.get()?.onPosClicked(refId = state.refId)
                     }
-                    negativeButton(state.negativeButtonResId) {
-                        state.listener.get()?.onNegClicked(state.refId)
+                    negativeButton(res = state.negativeButtonResId) {
+                        state.listener.get()?.onNegClicked(refId = state.refId)
                     }
                 }
         }
     }
 
-    private fun showDatePickerDialog(state : BaseStateUI.DatePickerDialog) {
+    private fun showDatePickerDialog(state: BaseStateUI.DatePickerDialog) {
         MaterialDialog(this.requireContext())
             .cancelOnTouchOutside(false)
             .show {
                 datePicker(requireFutureDate = state.requireFuture) { _, datetime ->
-                    state.listener.get()?.onDateSet(datetime, state.type)
+                    state.listener.get()?.onDateSet(dateTime = datetime, type = state.type)
                 }
             }
     }

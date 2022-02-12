@@ -4,17 +4,26 @@ import android.R
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.appclr8.dogrecycler.GlideApp
 import com.appclr8.dogrecycler.databinding.ImageItemBinding
 import timber.log.Timber
 import java.util.*
-import kotlin.collections.ArrayList
 
-class HomeAdapter (
+class HomeAdapter(
     private val items: ArrayList<String>,
     val context: Context
 ) : RecyclerView.Adapter<HomeHolder>() {
+
+    private val _selectedItem = MutableLiveData<Int>().apply {
+        value = -1
+    }
+    val selectedItem: LiveData<Int> = _selectedItem
+    private fun setSelectedItem(value: Int) {
+        _selectedItem.value = value
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHolder {
         return HomeHolder.from(this, parent)
@@ -36,6 +45,8 @@ class HomeAdapter (
         item.substringBefore(delimiter = "/")
 
         holder.itemTitle.text = item
+
+        holder.itemCard.setOnClickListener { setSelectedItem(value = position) }
     }
 
     override fun getItemCount(): Int {
