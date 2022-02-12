@@ -1,18 +1,17 @@
 <resources>
-    <string name="app_name">Simple Weather</string>
-    <string name="upcoming">Upcoming</string>
-    <string name="locations">Locations</string>
+    <string name="app_name">Dog Recycler</string>
     <string name="dialog_text_ok">Okay</string>
-    <string name="text_network_error_title">Network Error</string>
+    <string name="text_network_error_title">Emotional Damage!!</string>
     <string name="text_network_error_message">Check your loadshedding schedule or call telkom</string>
-    <!--Not a secure method of storing, this should be encrypted (if on device) or pulled from remote storage at runtime-->
-    <string name="api_key">5b60f1f8e4f74152c5ba818b59b77e2e</string>
     <string name="internetRequired">An internet connection is required</string>
     <string name="success">Great Success</string>
     <string name="failure">Emotional Damage</string>
-    <string name="pick_location">Pick a location</string>
     <string name="blank" />
     <string name="share">SHARE</string>
     <string name="save">SAVE</string>
     <string name="optionsDialog">Would you like to save or share this image?</string>
+    <string name="tryAgain">TRY AGAIN</string>
+    <string name="home">HOME</string>
+    <string name="hold_the_phone">Hold the phone</string>
+    <string name="figuring_out">We\'re figuring things out</string>
 </resources>

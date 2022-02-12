@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.appclr8.dogrecycler.base.BaseFragment
 import com.appclr8.dogrecycler.databinding.HomeFragmentBinding
 import com.appclr8.dogrecycler.di.AppComponent
@@ -54,6 +55,15 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
             recyclerAdapter = HomeAdapter(items = viewModel.imageUrls, context = requireContext())
             recyclerview.layoutManager = GridLayoutManager(context, 2)
             recyclerview.adapter = recyclerAdapter
+
+            recyclerview.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if(!recyclerView.canScrollVertically(1)) {
+                        viewModel.load()
+                    }
+                }
+            })
 
             recyclerAdapter!!.selectedItem.observe(viewLifecycleOwner) { selectedItem ->
                 if (selectedItem > -1) {

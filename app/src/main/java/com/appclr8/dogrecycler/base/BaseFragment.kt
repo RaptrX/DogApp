@@ -215,7 +215,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
 
     private fun showRadioDialog(state: BaseStateUI.RadioDialog) {
         MaterialDialog(this.requireContext())
-            .title(res = R.string.pick_location)
+            .title(res = state.title)
             .cancelOnTouchOutside(cancelable = false)
             .show {
                 listItemsSingleChoice(
@@ -233,7 +233,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
         if (oneButton) {
             MaterialDialog(this.context!!)
                 .cancelOnTouchOutside(cancelable = state.cancelable)
-                .message(res = state.messageTextId)
+                .message(text = state.messageText)
                 .show {
                     icon(res = R.drawable.ic_info_blue)
                     positiveButton(res = state.positiveButtonResId) {
@@ -243,7 +243,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment(), ViewModelProvider.
         } else {
             MaterialDialog(this.context!!)
                 .cancelOnTouchOutside(cancelable = state.cancelable)
-                .message(res = state.messageTextId)
+                .message(text = state.messageText)
                 .show {
                     icon(res = R.drawable.ic_info_blue)
                     positiveButton(res = state.positiveButtonResId) {

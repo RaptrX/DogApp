@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/horizontal_space.xml" value="0.251" />
         <entry key="app/src/main/res/drawable/ic_check_green.xml" value="0.2335" />
         <entry key="app/src/main/res/drawable/round_background.xml" value="0.21" />
+        <entry key="app/src/main/res/drawable/vertical_space.xml" value="0.251" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17916666666666667" />
         <entry key="app/src/main/res/layout/dialog_image.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/favourites_fragment.xml" value="0.3425925925925926" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.3425925925925926" />
+        <entry key="app/src/main/res/layout/image_item.xml" value="0.41794871794871796" />
         <entry key="app/src/main/res/layout/image_zoom_fragemnt.xml" value="0.4244791666666667" />
+        <entry key="app/src/main/res/layout/image_zoom_fragment.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/layout/search_fragment.xml" value="0.3425925925925926" />
         <entry key="app/src/main/res/layout/upcoming_item.xml" value="0.38958333333333334" />
       </map>

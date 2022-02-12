@@ -41,10 +41,18 @@ class HomeAdapter(
 
         Timber.d(item)
 
-        item.substringAfter(delimiter = "https://images.dog.ceo/breeds/")
-        item.substringBefore(delimiter = "/")
+        val breed = item
+            .substringAfter(delimiter = "https://images.dog.ceo/breeds/")
+            .substringBefore(delimiter = "/")
+            .replace("-", " ")
+            .split(' ')
+            .joinToString(" ") { word ->
+                word.replaceFirstChar {
+                    if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+                }
+            }
 
-        holder.itemTitle.text = item
+        holder.itemTitle.text = breed
 
         holder.itemCard.setOnClickListener { setSelectedItem(value = position) }
     }

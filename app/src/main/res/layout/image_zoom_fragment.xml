@@ -9,51 +9,89 @@
             name="varViewModel"
             type="com.appclr8.dogrecycler.ui.zoom.ZoomViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:padding="@dimen/fullSize">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/titleText"
-        style="@style/TextAppearance.Material3.HeadlineSmall"
-        android:layout_marginBottom="@dimen/fullSize"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Bull Mastiff" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:padding="@dimen/fullSize">
 
-    <ImageView
-        android:id="@+id/imageIcon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/halfSize"
-        android:minHeight="300dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleText"
-        app:layout_constraintBottom_toTopOf="@id/homeButton"
-        tools:src="@drawable/ic_check_green" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/titleText"
+            style="@style/TextAppearance.Material3.HeadlineSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/fullSize"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Bull Mastiff" />
 
-    <com.google.android.material.button.MaterialButton
-        android:text="Home"
-        android:textColor="@color/white"
-        android:textAppearance="@style/TextAppearance.Material3.ActionBar.Subtitle"
-        android:id="@+id/homeButton"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        app:strokeWidth="2dp"
-        app:strokeColor="@color/racingYellow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        <ImageView
+            android:id="@+id/imageIcon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/halfSize"
+            android:minHeight="300dp"
+            app:layout_constraintBottom_toTopOf="@id/homeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleText"
+            tools:src="@drawable/ic_check_green" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/homeButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:onClick="@{() -> varViewModel.navigateToHome()}"
+            android:text="@string/home"
+            android:textAppearance="@style/TextAppearance.Material3.ActionBar.Subtitle"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/shareButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/racingYellow"
+            app:strokeWidth="2dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/shareButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:onClick="@{() -> varViewModel.shareImage()}"
+            android:text="@string/share"
+            android:textAppearance="@style/TextAppearance.Material3.ActionBar.Subtitle"
+            android:textColor="@color/white"
+            android:layout_marginEnd="@dimen/halfSize"
+            android:layout_marginStart="@dimen/halfSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/saveButton"
+            app:layout_constraintStart_toEndOf="@id/homeButton"
+            app:strokeColor="@color/miami_blue"
+            app:strokeWidth="2dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:onClick="@{() -> varViewModel.saveImage()}"
+            android:text="@string/save"
+            android:textAppearance="@style/TextAppearance.Material3.ActionBar.Subtitle"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/shareButton"
+            app:strokeColor="@color/lizardGreen"
+            app:strokeWidth="2dp" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/no_network_lottie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_rawRes="@raw/no_network"
+            android:visibility="gone"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
